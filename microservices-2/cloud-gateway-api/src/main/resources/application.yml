@@ -1,0 +1,19 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: CLIENTAPI-1
+          uri: http://localhost:7777
+          predicates:
+            - Path=/show/**
+
+        - id: CLIENTAPI-2
+          uri: http://localhost:8888
+          predicates:
+            - Path=/consumer/**
